@@ -1,0 +1,32 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "build-Topup": "cd nova-components/Topup && npm run dev",
+        "build-Topup-prod": "cd nova-components/Topup && npm run prod",
+        "build-topup": "cd nova-components/Topup && npm run dev",
+        "build-topup-prod": "cd nova-components/Topup && npm run prod"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.13",
+        "axios": "^1.1.2",
+        "laravel-vite-plugin": "^0.7.8",
+        "lodash": "^4.17.19",
+        "postcss": "^8.4.20",
+        "tailwindcss": "^3.2.4",
+        "vite": "^3.2.5"
+    },
+    "dependencies": {
+        "esbuild": "^0.15.18",
+        "express": "^4.18.2",
+        "filepond": "^4.30.4",
+        "font-awesome": "^4.7.0",
+        "ioredis": "^5.2.4",
+        "redis": "^4.5.1",
+        "redis-server": "^1.2.2",
+        "request": "^2.88.2",
+        "socket.io": "^4.5.4",
+        "socket.io-client": "^4.5.4"
+    }
+}
