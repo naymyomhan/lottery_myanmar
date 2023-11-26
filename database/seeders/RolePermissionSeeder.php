@@ -39,7 +39,7 @@ class RolePermissionSeeder extends Seeder
             'Recommendation',
             'Result',
             'Section',
-            'TermsAndConditions', 
+            'TermsAndConditions',
             'TopUp',
             'UserGameWallet',
             'UserMainWallet',
@@ -69,7 +69,7 @@ class RolePermissionSeeder extends Seeder
             'Role',
             'Voucher',
             'Permission'
-            
+
             // ... your own models/permission you want to crate
         ]);
 
@@ -88,7 +88,7 @@ class RolePermissionSeeder extends Seeder
         $role->givePermissionTo(Permission::all());
 
         // Give User Super-Admin Role
-        $user = \App\Models\Admin::whereEmail('info@kohtut.me')->first(); // enter your email here
+        $user = \App\Models\Admin::whereEmail('naymyomhan@gmail.com')->first(); // enter your email here
         $user->assignRole('super-admin');
     }
 }
