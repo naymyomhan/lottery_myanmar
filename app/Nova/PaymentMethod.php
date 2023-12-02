@@ -47,19 +47,19 @@ class PaymentMethod extends Resource
         return [
             ID::make()->sortable(),
             Text::make('payment_name')->creationRules('required'),
-            Image::make('Logo','image')
+            Image::make('Logo', 'image')
                 ->store(
-                    function(Request $request,$model){
-                        $image=$request->image->store('Empire/Payment','do');
+                    function (Request $request, $model) {
+                        $image = $request->image->store('Empire/Payment', 'do');
                         return [
-                            'image_location'=>$image,
-                            'image_name'=>str_replace("Empire/Payment/","",$image),
-                            'image_path'=>"Empire/Payment"
+                            'image_location' => $image,
+                            'image_name' => str_replace("Empire/Payment/", "", $image),
+                            'image_path' => "Empire/Payment"
                         ];
                     }
                 )->hideFromDetail()->hideFromIndex()->creationRules('required'),
-            Image::make('Logo','image_location')->disk('do')->hideWhenCreating()->hideWhenUpdating(),
-            HasMany::make("PaymentAccount",'payment_accounts'),
+            Image::make('Logo', 'image_location')->disk('do')->hideWhenCreating()->hideWhenUpdating(),
+            HasMany::make("PaymentAccount", 'payment_accounts'),
             // AuditableLog::make(),
         ];
     }
@@ -108,7 +108,7 @@ class PaymentMethod extends Resource
         return [];
     }
 
-        public static function authorizedToCreate(Request $request)
+    public static function authorizedToCreate(Request $request)
     {
         return true;
     }

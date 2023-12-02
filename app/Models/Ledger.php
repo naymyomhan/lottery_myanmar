@@ -17,11 +17,14 @@ class Ledger extends Model implements Auditable
 
     protected $casts = [
         'target_date' => 'datetime',
+        'start_date' => 'datetime',
     ];
+
+
 
     // target_date
 
-     protected $fillable = [
+    protected $fillable = [
         'datetime',
         'start_date',
     ];
@@ -31,11 +34,13 @@ class Ledger extends Model implements Auditable
         return $this->hasMany(Section::class);
     }
 
-    public function results(){
+    public function results()
+    {
         return $this->hasMany(Result::class);
     }
 
-    public function mm_morning_numbers(){
+    public function mm_morning_numbers()
+    {
         return $this->hasMany(MmMorningNumber::class);
     }
 
@@ -53,5 +58,4 @@ class Ledger extends Model implements Auditable
     {
         return $this->hasMany(MmEveningNumber::class);
     }
-    
 }

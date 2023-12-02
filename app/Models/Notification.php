@@ -36,21 +36,19 @@ class Notification extends Model implements Auditable
             if (is_null($notification->user_id)) {
                 $notification->user_id = 0;
                 $notification->type = 0;
-                FCMService::send($notification->title, $notification->message, env("DO_STORAGE_URL") . $notification->image_location);
+                // FCMService::send($notification->title, $notification->message, env("DO_STORAGE_URL") . $notification->image_location);
             }
-            
         });
 
         Notification::updating(function (Notification $notification) {
             if (is_null($notification->user_id)) {
                 $notification->user_id = 0;
-                FCMService::send($notification->title, $notification->message, env("DO_STORAGE_URL") . $notification->image_location);
+                // FCMService::send($notification->title, $notification->message, env("DO_STORAGE_URL") . $notification->image_location);
             }
-           
         });
     }
 
-      public function user()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

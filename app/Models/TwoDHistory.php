@@ -11,14 +11,13 @@ class TwoDHistory extends Model implements Auditable
 {
     use HasFactory;
     use \OwenIt\Auditing\Auditable;
-     use HasRoles;
+    use HasRoles;
 
     protected $guard_name = 'web';
 
-    
+
 
     protected $table = '2dlive_daily_model';
 
     protected $fillable = ['set', 'value', 'open_time', 'twod', 'created_at'];
-
 }

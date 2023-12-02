@@ -43,11 +43,8 @@ Route::get('/privacy_policy', function () {
     return view('privacy_policy');
 });
 
-Route::get('/user/password/change/page', [NovaActionController::class, 'get_change_password_page'])->middleware('novaauth');
-Route::post('/user/password/change', [NovaActionController::class, 'change_password'])->name('change_password')->middleware('novaauth');
 
-Route::post('/topup', [NovaActionController::class, 'topup'])->name('topup')->middleware('novaauth');
-Route::post('/take_out', [NovaActionController::class, 'take_out'])->name('take_out')->middleware('novaauth');
+
 
 Route::get('/topup/approve/{id}', [NovaActionController::class, 'approve_topup'])->middleware('novaauth');
 Route::get('/messenger', [MessageController::class, 'messenger'])->middleware('novaauth');

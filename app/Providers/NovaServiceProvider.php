@@ -66,81 +66,81 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         parent::boot();
 
         Nova::mainMenu(
-            function(Request $request){
-                return[
+            function (Request $request) {
+                return [
                     MenuSection::dashboard(Main::class)->icon('chart-bar'),
 
-                    MenuSection::make("Analysis",[
+                    MenuSection::make("Analysis", [
                         MenuItem::dashboard(AnalysisDashboard::class),
                         MenuItem::dashboard(UserAnalysis::class),
                         MenuItem::dashboard(SaleAnalysis::class)
                     ])->icon('document-text')->collapsable(),
 
-                    MenuSection::make("Lottery",[
+                    MenuSection::make("Lottery", [
                         MenuItem::resource(TwoDHistory::class),
                         MenuItem::resource(ThreeDHistory::class),
                         MenuItem::resource(TwoDCloseDay::class),
                     ])->icon('document-text')->collapsable(),
 
-                    MenuSection::make("2D Ledger",[
+                    MenuSection::make("2D Ledger", [
                         MenuItem::resource(Ledger::class),
                         // MenuItem::resource(Section::class),
                         MenuItem::resource(Voucher::class),
                     ])->icon('play')->collapsable(),
 
-                    MenuSection::make("3D Ledger",[
+                    MenuSection::make("3D Ledger", [
                         MenuItem::resource(ThreeDLedger::class),
                         MenuItem::resource(ThreeVoucher::class),
                     ])->icon('play')->collapsable(),
 
-                     MenuSection::make("Promotion",[
+                    MenuSection::make("Promotion", [
                         MenuItem::resource(Promotion::class),
                         MenuItem::resource(PromotionTopUp::class),
                     ])->icon('play')->collapsable(),
 
-                    MenuSection::make("Shan Koe Mee",[
+                    MenuSection::make("Shan Koe Mee", [
                         MenuItem::resource(GameRoom::class),
                         MenuItem::resource(GameServer::class),
                         MenuItem::resource(GameTransaction::class),
                         // MenuItem::resource(Section::class),
                     ])->icon('play')->collapsable(),
 
-                    MenuSection::make("Game",[
+                    MenuSection::make("Game", [
                         MenuItem::resource(Games::class),
                     ])->icon('document-text')->collapsable(),
 
-                    MenuSection::make('Top Up',[
+                    MenuSection::make('Top Up', [
                         MenuItem::resource(TopUp::class),
                         MenuItem::resource(PaymentMethod::class),
                         MenuItem::resource(PaymentAccount::class),
                     ])->icon('shopping-bag')->collapsable(),
 
-                    MenuSection::make('Cash Out',[
+                    MenuSection::make('Cash Out', [
                         MenuItem::resource(CashOut::class),
                         MenuItem::resource(CashOutMethod::class),
                     ])->icon('shopping-bag')->collapsable(),
 
-                    MenuSection::make('Users',[
+                    MenuSection::make('Users', [
                         MenuItem::dashboard(UserInsights::class),
                         MenuItem::resource(Agent::class),
                         MenuItem::resource(Admin::class),
                         MenuItem::resource(User::class),
                         MenuItem::resource(BanList::class),
-                        
+
                     ])->icon('user')->collapsable(),
 
-                    MenuSection::make('Role & Permission',[
-                         MenuItem::link('Roles', '/resources/roles'),
-                         MenuItem::link('Permission', '/resources/permissions'),
+                    MenuSection::make('Role & Permission', [
+                        MenuItem::link('Roles', '/resources/roles'),
+                        MenuItem::link('Permission', '/resources/permissions'),
                     ])->icon('user')->collapsable(),
 
-                     MenuSection::make('Accountant',[
+                    MenuSection::make('Accountant', [
                         MenuItem::dashboard(DLedger::class),
                         MenuItem::resource(TopUp::class),
                         MenuItem::resource(CashOut::class),
                     ])->icon('document-report')->collapsable(),
 
-                     MenuSection::make('Utils',[
+                    MenuSection::make('Utils', [
                         MenuItem::resource(ExchangeRate::class),
                         MenuItem::resource(Ads::class),
                         MenuItem::resource(Programs::class),
@@ -148,7 +148,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                         MenuItem::resource(Recommendation::class),
                     ])->icon('document-text')->collapsable(),
 
-                      MenuSection::make('Settings',[
+                    MenuSection::make('Settings', [
                         MenuItem::resource(Tutorial::class),
                         MenuItem::resource(Faq::class),
                         MenuItem::resource(ContactUs::class),
@@ -158,13 +158,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
 
                     MenuSection::make('Log Viewer', [
-                            MenuItem::link('Dashboard', '/nova-logs/dashboard'),
-                            MenuItem::link('Logs', '/nova-logs/list'),
-                        ])
-                            ->collapsable()
-                            ->icon('document-text'),
-                   
-                    
+                        MenuItem::link('Dashboard', '/nova-logs/dashboard'),
+                        MenuItem::link('Logs', '/nova-logs/list'),
+                    ])
+                        ->collapsable()
+                        ->icon('document-text'),
+
+
                 ];
             }
         );
@@ -178,9 +178,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function routes()
     {
         Nova::routes()
-                ->withAuthenticationRoutes()
-                ->withPasswordResetRoutes()
-                ->register();
+            ->withAuthenticationRoutes()
+            ->withPasswordResetRoutes()
+            ->register();
     }
 
     /**
@@ -227,31 +227,31 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [
-        new \PhpJunior\NovaLogViewer\Tool(),
-        // new \Sereny\NovaPermissions\NovaPermissions(),
-        // (new \Sereny\NovaPermissions\NovaPermissions())->canSee(function ($request) {
-        //      return $request->user()->isSuperAdmin();
-        //  }),
-        // (new \Sereny\NovaPermissions\NovaPermissions())->canSee(function ($request) {
-        //     return $request->user()->isSuperAdmin();
-        // }),
-        \Sereny\NovaPermissions\NovaPermissions::make()
-            // ->roleResource("Role::class")
-            // ->permissionResource(Permission::class)
-            ->disablePermissions()
-            ->hideFieldsFromRole([
-                'id',
-                'guard_name'
-            ])
-            ->hideFieldsFromPermission([
-                'id',
-                'guard_name',
-                'users',
-                'roles'
-            ])
-            ->resolveGuardsUsing(function($request) {
-                return [ 'web' ];
-            })
+            new \PhpJunior\NovaLogViewer\Tool(),
+            // new \Sereny\NovaPermissions\NovaPermissions(),
+            // (new \Sereny\NovaPermissions\NovaPermissions())->canSee(function ($request) {
+            //      return $request->user()->isSuperAdmin();
+            //  }),
+            // (new \Sereny\NovaPermissions\NovaPermissions())->canSee(function ($request) {
+            //     return $request->user()->isSuperAdmin();
+            // }),
+            \Sereny\NovaPermissions\NovaPermissions::make()
+                // ->roleResource("Role::class")
+                // ->permissionResource(Permission::class)
+                ->disablePermissions()
+                ->hideFieldsFromRole([
+                    'id',
+                    'guard_name'
+                ])
+                ->hideFieldsFromPermission([
+                    'id',
+                    'guard_name',
+                    'users',
+                    'roles'
+                ])
+                ->resolveGuardsUsing(function ($request) {
+                    return ['web'];
+                })
             // ->resolveModelForGuardUsing(function($request) {
             //     /** @var App\Auth\CustomGuard $guard */
             //     $guard = auth()->guard();

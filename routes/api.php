@@ -40,6 +40,8 @@ Route::post('/user/auth/login', [UserAuthController::class, 'login']);
 Route::post('/user/otp/request', [UserAuthController::class, 'request_otp'])->middleware('auth:sanctum');
 Route::post('/user/otp/verify', [UserAuthController::class, 'verify_otp'])->middleware('auth:sanctum');
 
+Route::get('/two_d_live', [HistoryController::class, 'getLive']);
+Route::get('/today_history', [HistoryController::class, 'getTodayHistory']);
 Route::get('/tdhistory', [HistoryController::class, 'getTwDHistory']);
 Route::get('/tedhistory', [HistoryController::class, 'getTeDHistory']);
 Route::get('/app', [AppController::class, 'getApps']);

@@ -49,7 +49,7 @@ class NovaActionController extends Controller
                             'image_path' => "",
                             'image_name' => "",
                             'image_location' => "",
-                            'type'=> 1,
+                            'type' => 1,
                         ]);
                     }
                 }
@@ -106,14 +106,14 @@ class NovaActionController extends Controller
                         if ($save) {
                             $user->main_wallet->decrement('balance', $cash_out->amount);
                             $new_noti = Notification::create([
-                            'user_id' => $user->id,
-                            'title' => "ငွေထုတ်",
-                            'message' => "သင့် Wallet မှ ငွေ {$cash_out->amount} Ks ထုတ်ယူပြီးပါပြီ။",
-                            'image_path' => "",
-                            'image_name' => "",
-                            'image_location' => "",
-                            'type'=> 2,
-                        ]);
+                                'user_id' => $user->id,
+                                'title' => "ငွေထုတ်",
+                                'message' => "သင့် Wallet မှ ငွေ {$cash_out->amount} Ks ထုတ်ယူပြီးပါပြီ။",
+                                'image_path' => "",
+                                'image_name' => "",
+                                'image_location' => "",
+                                'type' => 2,
+                            ]);
                         }
                     }
                 }
@@ -177,13 +177,13 @@ class NovaActionController extends Controller
                             $user = User::find($winner->user_id);
                             $user->main_wallet()->increment('balance', $amount);
                             $new_noti = Notification::create([
-                            'user_id' => $user->id,
-                            'title' => "ဂုဏ်ယူပါတယ်!",
-                            'message' => "သင့် ဆုကြေးငွေ $amount Ks ကိုရရှိပါသည်",
-                            'image_path' => "",
-                            'image_name' => "",
-                            'image_location' => "",
-                            'type'=> 3,
+                                'user_id' => $user->id,
+                                'title' => "ဂုဏ်ယူပါတယ်!",
+                                'message' => "သင့် ဆုကြေးငွေ $amount Ks ကိုရရှိပါသည်",
+                                'image_path' => "",
+                                'image_name' => "",
+                                'image_location' => "",
+                                'type' => 3,
                             ]);
 
                             // Log successful payment
@@ -235,13 +235,13 @@ class NovaActionController extends Controller
                             $user = User::find($winner->user_id);
                             $user->main_wallet()->increment('balance', $amount);
                             $new_noti = Notification::create([
-                            'user_id' => $user->id,
-                            'title' => "ဂုဏ်ယူပါတယ်!",
-                            'message' => "သင့် ဆုကြေးငွေ $amount Ks ကိုရရှိပါသည်",
-                            'image_path' => "",
-                            'image_name' => "",
-                            'image_location' => "",
-                            'type'=> 3,
+                                'user_id' => $user->id,
+                                'title' => "ဂုဏ်ယူပါတယ်!",
+                                'message' => "သင့် ဆုကြေးငွေ $amount Ks ကိုရရှိပါသည်",
+                                'image_path' => "",
+                                'image_name' => "",
+                                'image_location' => "",
+                                'type' => 3,
                             ]);
 
                             // Log successful payment
@@ -306,14 +306,14 @@ class NovaActionController extends Controller
                 $user = User::find($winner->user_id);
                 $user->main_wallet->increment('balance', $amount);
                 $new_noti = Notification::create([
-                            'user_id' => $user->id,
-                            'title' => "ဂုဏ်ယူပါတယ်!",
-                            'message' => "သင့် ဆုကြေးငွေ $amount Ks ကိုရရှိပါသည်",
-                            'image_path' => "",
-                            'image_name' => "",
-                            'image_location' => "",
-                            'type'=> 3,
-                            ]);
+                    'user_id' => $user->id,
+                    'title' => "ဂုဏ်ယူပါတယ်!",
+                    'message' => "သင့် ဆုကြေးငွေ $amount Ks ကိုရရှိပါသည်",
+                    'image_path' => "",
+                    'image_name' => "",
+                    'image_location' => "",
+                    'type' => 3,
+                ]);
             }
             DB::commit();
             return back();

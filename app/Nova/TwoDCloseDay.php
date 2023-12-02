@@ -43,19 +43,19 @@ class TwoDCloseDay extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Day','name')->displayUsing(function ($value) {
-                return mb_substr($value,0,40);
+            Text::make('Day', 'name')->displayUsing(function ($value) {
+                return mb_substr($value, 0, 40);
             })->onlyOnIndex(),
-            Text::make('Day','name')->hideFromIndex(),
-            Text::make('Description','description')->displayUsing(function ($value) {
-                return mb_substr($value,0,60);
+            Text::make('Day', 'name')->hideFromIndex(),
+            Text::make('Description', 'description')->displayUsing(function ($value) {
+                return mb_substr($value, 0, 60);
             })->onlyOnIndex(),
-            Text::make('Description','description')->hideFromIndex(),
-            Text::make('Date','date')->displayUsing(function ($value) {
-                return mb_substr($value,0,40);
+            Text::make('Description', 'description')->hideFromIndex(),
+            Text::make('Date', 'date')->displayUsing(function ($value) {
+                return mb_substr($value, 0, 40);
             })->onlyOnIndex(),
-            Text::make('Date','date')->hideFromIndex(),
-             // AuditableLog::make(),
+            Text::make('Date', 'date')->hideFromIndex(),
+            // AuditableLog::make(),
         ];
     }
 
@@ -116,6 +116,4 @@ class TwoDCloseDay extends Resource
     {
         return true;
     }
-
-    
 }
