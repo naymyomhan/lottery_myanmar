@@ -331,7 +331,11 @@ class PaymentController extends Controller
             unset($cash_out->admin_id);
             unset($cash_out->cash_out_method_id);
         }
-
-        return $this->success('get cash out history successful', $cash_outs);
+        return $this->success("Get cash out history successful", [
+            'current_page' => $cash_outs->currentPage(),
+            'last_page' => $cash_outs->lastPage(),
+            'per_page' => $cash_outs->perPage(),
+            'data' => $cash_outs->items(),
+        ]);
     }
 }

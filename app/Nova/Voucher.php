@@ -47,35 +47,63 @@ class Voucher extends Resource
             Text::make('Voucher Code', 'vouchers_code'),
             BelongsTo::make('User', 'user', User::class)
                 ->displayUsing(function ($user) {
-                    return $user->name; // Assuming the user model has a 'name' attribute
+                    return $user->name;
                 }),
             Text::make('Total amount', 'total_amount'),
             BelongsTo::make('Section', 'section', Section::class)
                 ->displayUsing(function ($section) {
-                    return $section->section_type_name; // Assuming the section model has a 'section_type_name' attribute
+                    return $section->section_type_name;
                 })
                 ->onlyOnDetail(),
-            Text::make('Time', function () {
-                return $this->section->close_at; // Assuming the section relationship is correctly defined
+
+            Text::make('section_index', function () {
+                switch ($this->section->section_index) {
+                    case 0:
+                        return "Morning";
+                        break;
+                    case 1:
+                        return "Noon";
+                        break;
+                    case 2:
+                        return "After Noon";
+                        break;
+                    case 3:
+                        return "Evening";
+                        break;
+                    default:
+                        return "null";
+                        break;
+                }
             }),
-            Text::make('Created At', function () {
-                return $this->section->created_at; // Assuming the section relationship is correctly defined
-            }),
+
             Text::make('Pay Back Multiply', function () {
-                return $this->section->pay_back_multiply; // Assuming the section relationship is correctly defined
+                return $this->section->pay_back_multiply;
             }),
+
+            Text::make('Created At', function () {
+                return $this->section->created_at->format('Y-M-d');
+            }),
+
+            // Text::make('Clost Time', function () {
+            //     return $this->section->close_at;
+            // }),
+
+
             HasMany::make('Morning Bets', 'mm_morning_bets', MmMorningBet::class)
                 ->hideFromDetail(function () {
                     return $this->section->section_index == 0 ? false : true;
                 }),
+
             HasMany::make('Noon Bets', 'mm_noon_bets', MmNoonBet::class)
                 ->hideFromDetail(function () {
-                    return $this->section->section_index == 2 ? false : true;
+                    return $this->section->section_index == 1 ? false : true;
                 }),
-            HasMany::make('Afternoon Bets', 'mm_afternoon_bets', MmAfternoonBet::class)
+
+            HasMany::make('Afternoon Bets', 'mm_after_noon_bets', MmAfterNoonBet::class)
                 ->hideFromDetail(function () {
                     return $this->section->section_index == 2 ? false : true;
                 }),
+
             HasMany::make('Evening Bets', 'mm_evening_bets', MmEveningBet::class)
                 ->hideFromDetail(function () {
                     return $this->section->section_index == 3 ? false : true;
