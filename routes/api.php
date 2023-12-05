@@ -47,6 +47,8 @@ Route::get('/tedhistory', [HistoryController::class, 'getTeDHistory']);
 Route::get('/app', [AppController::class, 'getApps']);
 Route::get('/exchage', [ExchangeRateController::class, 'getExchangeRate']);
 
+Route::get('/app_data', [AdsController::class, 'getAppData']);
+
 
 Route::get('/topupgrade', [MessageController::class, 'topUpGrade']);
 // Route::group(['middleware' => ['auth:sanctum','otp']], function() {
@@ -115,7 +117,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/tutorials', [TutorialController::class, 'get_tutorials']);
     // get Ads
     Route::get('/ads', [AdsController::class, 'getAds']);
-    Route::get('/app_data', [AdsController::class, 'getAppData']);
+
     // get holidays
     Route::get('/holidays', [HolidayController::class, 'getHolidays']);
     // Recommendation
