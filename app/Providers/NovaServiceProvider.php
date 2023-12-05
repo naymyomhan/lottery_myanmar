@@ -25,6 +25,7 @@ use Laravel\Nova\Menu\MenuSection;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use App\Nova\Ads;
+use App\Nova\AppData;
 use App\Nova\Notification;
 use App\Nova\Games;
 use App\Nova\Faq;
@@ -154,6 +155,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                         MenuItem::resource(ContactUs::class),
                         MenuItem::resource(NovaPrivacyPolicy::class),
                         MenuItem::resource(TermsAndConditions::class),
+                        MenuItem::resource(AppData::class),
                     ])->icon('tag')->collapsable(),
 
 
