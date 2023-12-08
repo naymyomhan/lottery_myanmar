@@ -27,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\User\MessageController;
 use App\Http\Controllers\Api\User\ExchangeRateController;
 use App\Http\Controllers\Api\Admin\UserPromotionController;
+use App\Http\Controllers\NotificationController;
 
 // Route::get('/storage_url',[SpaceController::class,'storage_url']);
 // Route::post('/auth/presign',[SpaceController::class,'space_presign_url']);
@@ -48,6 +49,10 @@ Route::get('/app', [AppController::class, 'getApps']);
 Route::get('/exchage', [ExchangeRateController::class, 'getExchangeRate']);
 
 Route::get('/app_data', [AdsController::class, 'getAppData']);
+
+Route::post('test/noti', [NotificationController::class, 'testNotification']);
+
+// Route::post('/notification', [NotificaionController::class, 'server_notification']);
 
 
 Route::get('/topupgrade', [MessageController::class, 'topUpGrade']);
@@ -149,6 +154,3 @@ Route::post('/agent/login', [AgentAuthController::class, 'login']);
 Route::group(['middleware' => ['auth:sanctum', 'agent']], function () {
     Route::get('/agent/profile', [AgentProfileController::class, 'profile']);
 });
-
-
-Route::post('/notification', [NotificaionController::class, 'server_notification']);

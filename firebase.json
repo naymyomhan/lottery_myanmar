@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "lottery-myanmar-2d3d",
+  "private_key_id": "464aa7c376ccad31bfc0bd01164c1566da09d573",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCkd39Jd0cxhEnO\nNwgqEUocqsDWjYy0GeCr1WhiOqUey6f/PjcjUzHWE+2ngIyn4vQDUNvWAn6azkhh\nhPVrQMLMlkCpu+i9/d0Eessl7EzvWKE/YSBye/qe3YIJn2KVss8PU1kz71Y9gwDP\nocn/BOOr8kHmy3JqsJPFCPROmijnc5mnm8jOimbkrsKJnFGDDwS+1L/kpnPbKVl3\n3crd93igZbXAhTFipMTiy/tyBXU+JNANDbWz5NKElKWUdM/sExVdwmOW/W42v03c\nVUaeavdKnxKnLjpZSKOh62u8mG3tCHJ8nCf7y9PoeCxGv2vZIIKtYqmrHsuqh1hW\nc39YqiMHAgMBAAECggEANXKoKQXcWxk0qxFzU8h+n0ZWmOMzYKwwOWeHHrUUSCfD\nFs3vOUmmHn4nc5HxI/Y7eoBikPAKmOCE4TxGTW6kX7xMk1x/zI6drwEA1/gtIHNb\nI6+6zbnAvrQZuGrVrPSJGd/qU1hqXF8gelmHvZqnKo/2HrzrGAT+YMACNTEgLeb7\napDXb+jMR72TQollpNHLcIySFrog3kIod3vk4xqnbdyFMXgpgfavZozpOBSo38Ty\no/Ez8YK1Oy+pitpxuTbO1JDzXJBfyIYY1HwiE6XeJR3lW89utDPRnuq2i4plv8Vc\nmKIW4asck3KY1mVjBXAG5WCl/N53SGF+dCPoC6TagQKBgQDjfieBabRNvHMapTs3\n9KT9/uNrQ1TBxRi8fF6ilmUSDR34J86ZZUluM8GCU2SX66d0FsaEVZ8brfq5GW/x\nBGa7prRelpn5H+SpH8PDBa2e/uEZrJRaQkdT79ETY17Bv1lvn5vfYDBLUrQywzD7\nXu5FfsqDQX55KThJ8SAyWaiZ4QKBgQC5E4C1GkMRh7JmhsjOMFpluhnUe3pT6uat\n1q/6Ta76RQ4nDzBwlj9pd9FVT/vLsiVw0WD9K1L5q5VSya1uVKOr6iqB8Tj5j9kQ\njFU9To2tKyrqUXKKP4GEjOjIDvqf6obusaYqCDgytUSDGxnH+OvrJCqh3ORH8QMz\nWXIFe6pp5wKBgQDHVZYmJkoPx22QTnHKQPqFeN8q8K+Grj5TgiKmEmPzYjz9YVv9\nOywRfRY1LP86wwlShlZiRGgLJ/JGWIymwnWGPbdUHmBCU3jX3HZ7HzGX3Lu+9GJ1\niBfZ64vmki7IU/N5BIDfRPhsN8afqDr2N6NOj5/BTRUV81FYMQlGNRuv4QKBgGbn\nUB3h/z6E+42EDayPOAPtyKTbDvYP2rj3cJs0jEC9GpRfHqjK8XEb3LmZoj/symKD\nGHFLoHQPkhQY7KQ2zVYt+fqL/AjOkXtg+5f90EpjgRYNuSjjDIl9q4Rox7MYvHOF\nNQWT0mNnZDOdYuVMIyh30Hh1EDxr5kKrzfj8fJErAoGAVfxSSWXvP9JsU+zx3AeU\nBMxcH5SmqUGiL988eVIX9x/xWDA7RuekpK/kIJ0ZY1zmIFplFRPUUbwlXe7TIaGv\n9wEwGyH6M+aZnMn9xOoCpotHaGhiTessW9ysZMSAv6eqc1ujhaPo4PuOb6/Zlfkn\n4oeKsqORJwA83sMU1UQS+fA=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-ufyaz@lottery-myanmar-2d3d.iam.gserviceaccount.com",
+  "client_id": "107002554728729981128",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-ufyaz%40lottery-myanmar-2d3d.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
