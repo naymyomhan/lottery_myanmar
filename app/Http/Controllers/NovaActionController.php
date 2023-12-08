@@ -17,6 +17,7 @@ use App\Models\ThreeDLedger;
 use App\Models\ThreeDPayBack;
 use App\Models\TopUp;
 use App\Models\User;
+use App\Traits\NotificationService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\Log;
 
 class NovaActionController extends Controller
 {
+    use NotificationService;
     function approve_topup($topup_id)
     {
         $topup = TopUp::find($topup_id);
@@ -42,15 +44,8 @@ class NovaActionController extends Controller
                     $save = $topup->save();
                     if ($save) {
                         $user->main_wallet->increment('balance', $topup->amount);
-                        $new_noti = Notification::create([
-                            'user_id' => $user->id,
-                            'title' => "ငွေဖြည့်",
-                            'message' => "သင့် Wallet ထဲသို့ ဖြည့်သွင်းငွေ {$topup->amount} Ks ရောက်ရှိပါသည်။",
-                            'image_path' => "",
-                            'image_name' => "",
-                            'image_location' => "",
-                            'type' => 1,
-                        ]);
+                        //Send Data and Notification
+                        $this->sendEvent($user->firebase_token, "TOPUP");
                     }
                 }
             }
@@ -68,6 +63,8 @@ class NovaActionController extends Controller
                 $topup->payment_transaction_number = '';
                 $topup->admin_id = Auth::guard('admin')->user()->id;
                 $save = $topup->save();
+                //Send Data and Notification
+                $this->sendEvent($user->firebase_token, "TOPUP");
             }
         }
         return back();
@@ -84,6 +81,7 @@ class NovaActionController extends Controller
                 $topup->success = 2;
                 $topup->admin_id = Auth::guard('admin')->user()->id;
                 $topup->save();
+                //Send Data and Notification
             }
         }
         return back();
@@ -105,15 +103,7 @@ class NovaActionController extends Controller
                         $save = $cash_out->save();
                         if ($save) {
                             $user->main_wallet->decrement('balance', $cash_out->amount);
-                            $new_noti = Notification::create([
-                                'user_id' => $user->id,
-                                'title' => "ငွေထုတ်",
-                                'message' => "သင့် Wallet မှ ငွေ {$cash_out->amount} Ks ထုတ်ယူပြီးပါပြီ။",
-                                'image_path' => "",
-                                'image_name' => "",
-                                'image_location' => "",
-                                'type' => 2,
-                            ]);
+                            //Send Data and Notification
                         }
                     }
                 }
@@ -141,6 +131,7 @@ class NovaActionController extends Controller
                     $cash_out->success = 2;
                     $cash_out->admin_id = Auth::guard('admin')->user()->id;
                     $cash_out->save();
+                    //Send Data and Notification
                 }
             }
             return back();
@@ -176,15 +167,16 @@ class NovaActionController extends Controller
                             // Add money to winner wallet
                             $user = User::find($winner->user_id);
                             $user->main_wallet()->increment('balance', $amount);
-                            $new_noti = Notification::create([
-                                'user_id' => $user->id,
-                                'title' => "ဂုဏ်ယူပါတယ်!",
-                                'message' => "သင့် ဆုကြေးငွေ $amount Ks ကိုရရှိပါသည်",
-                                'image_path' => "",
-                                'image_name' => "",
-                                'image_location' => "",
-                                'type' => 3,
-                            ]);
+                            // $new_noti = Notification::create([
+                            //     'user_id' => $user->id,
+                            //     'title' => "ဂုဏ်ယူပါတယ်!",
+                            //     'message' => "သင့် ဆုကြေးငွေ $amount Ks ကိုရရှိပါသည်",
+                            //     'image_path' => "",
+                            //     'image_name' => "",
+                            //     'image_location' => "",
+                            //     'type' => 3,
+                            // ]);
+                            //Send Data and Notification
 
                             // Log successful payment
                             Log::info("Payment successful for winner with ID: $winner->id");
@@ -234,15 +226,16 @@ class NovaActionController extends Controller
                             // Add money to winner wallet
                             $user = User::find($winner->user_id);
                             $user->main_wallet()->increment('balance', $amount);
-                            $new_noti = Notification::create([
-                                'user_id' => $user->id,
-                                'title' => "ဂုဏ်ယူပါတယ်!",
-                                'message' => "သင့် ဆုကြေးငွေ $amount Ks ကိုရရှိပါသည်",
-                                'image_path' => "",
-                                'image_name' => "",
-                                'image_location' => "",
-                                'type' => 3,
-                            ]);
+                            // $new_noti = Notification::create([
+                            //     'user_id' => $user->id,
+                            //     'title' => "ဂုဏ်ယူပါတယ်!",
+                            //     'message' => "သင့် ဆုကြေးငွေ $amount Ks ကိုရရှိပါသည်",
+                            //     'image_path' => "",
+                            //     'image_name' => "",
+                            //     'image_location' => "",
+                            //     'type' => 3,
+                            // ]);
+                            //Send Data and Notification
 
                             // Log successful payment
                             Log::info("Payment successful for winner with ID: $winner->id");
@@ -305,15 +298,16 @@ class NovaActionController extends Controller
                 //Add money to winner wallet
                 $user = User::find($winner->user_id);
                 $user->main_wallet->increment('balance', $amount);
-                $new_noti = Notification::create([
-                    'user_id' => $user->id,
-                    'title' => "ဂုဏ်ယူပါတယ်!",
-                    'message' => "သင့် ဆုကြေးငွေ $amount Ks ကိုရရှိပါသည်",
-                    'image_path' => "",
-                    'image_name' => "",
-                    'image_location' => "",
-                    'type' => 3,
-                ]);
+                // $new_noti = Notification::create([
+                //     'user_id' => $user->id,
+                //     'title' => "ဂုဏ်ယူပါတယ်!",
+                //     'message' => "သင့် ဆုကြေးငွေ $amount Ks ကိုရရှိပါသည်",
+                //     'image_path' => "",
+                //     'image_name' => "",
+                //     'image_location' => "",
+                //     'type' => 3,
+                // ]);
+                //Send Data and Notification
             }
             DB::commit();
             return back();

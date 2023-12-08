@@ -16,6 +16,8 @@
         "fruitcake/laravel-cors": "^3.0",
         "guzzlehttp/guzzle": "^7.5",
         "jangvel/nova-gutenberg": "^1.0",
+        "kreait/firebase-php": "^7.9",
+        "kreait/laravel-firebase": "^5.5",
         "laraning/nova-time-field": "^1.2",
         "laravel/framework": "^9.19",
         "laravel/nova": "*",
