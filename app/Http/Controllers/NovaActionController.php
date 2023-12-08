@@ -82,6 +82,7 @@ class NovaActionController extends Controller
                 $topup->admin_id = Auth::guard('admin')->user()->id;
                 $topup->save();
                 //Send Data and Notification
+                $this->sendEvent($user->firebase_token, "TOPUP");
             }
         }
         return back();
@@ -104,6 +105,8 @@ class NovaActionController extends Controller
                         if ($save) {
                             $user->main_wallet->decrement('balance', $cash_out->amount);
                             //Send Data and Notification
+
+                            $this->sendEvent($user->firebase_token, "CASHOUT");
                         }
                     }
                 }
@@ -132,6 +135,7 @@ class NovaActionController extends Controller
                     $cash_out->admin_id = Auth::guard('admin')->user()->id;
                     $cash_out->save();
                     //Send Data and Notification
+                    $this->sendEvent($user->firebase_token, "CASHOUT");
                 }
             }
             return back();
